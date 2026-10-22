@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taufik Afrizal - Portofolio</title>
+<meta name="description" content="Portofolio Taufik Afrizal: mahasiswa Teknik Informatika dengan pengalaman administrasi, pengembangan web PHP + MySQL, dan pembukuan.">
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --text: #1b2430;
+    --muted: #5b6676;
+    --line: #e3e7ee;
+    --accent: #1f5fd1;
+    --accent-soft: #e8f0fd;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f141b;
+      --surface: #171e28;
+      --text: #e8edf4;
+      --muted: #9aa6b6;
+      --line: #263041;
+      --accent: #6aa3ff;
+      --accent-soft: #1c2a42;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 58px; }
+  .brand { font-weight: 700; letter-spacing: .2px; color: var(--text); }
+  .nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
+  .nav ul a { color: var(--muted); font-size: 14px; }
+  .nav ul a:hover { color: var(--text); text-decoration: none; }
+
+  .hero { padding: 72px 0 48px; }
+  .hero .tag {
+    display: inline-block; font-size: 13px; color: var(--accent);
+    background: var(--accent-soft); padding: 5px 12px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .hero h1 { font-size: clamp(32px, 6vw, 48px); line-height: 1.15; margin: 0 0 14px; }
+  .hero p { max-width: 640px; color: var(--muted); font-size: 18px; margin: 0 0 26px; }
+  .btn {
+    display: inline-block; padding: 11px 20px; border-radius: 10px; font-weight: 600; font-size: 15px;
+    background: var(--accent); color: #fff; margin-right: 10px;
+  }
+  .btn:hover { text-decoration: none; opacity: .92; }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+
+  section { padding: 44px 0; }
+  section h2 { font-size: 26px; margin: 0 0 8px; }
+  section .sub { color: var(--muted); margin: 0 0 26px; }
+
+  .grid { display: grid; gap: 16px; }
+  .grid.two { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 19px; }
+  .card .meta { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+  .card p { margin: 0 0 12px; }
+  .card ul { margin: 0 0 14px; padding-left: 20px; }
+  .card li { margin-bottom: 4px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 13px; padding: 4px 11px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+  }
+
+  .gallery { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .shot {
+    margin: 0; background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+  .shot figcaption { padding: 10px 14px; font-size: 14px; color: var(--muted); }
+  .note { font-size: 14px; color: var(--muted); margin-top: 14px; }
+
+  .skills h4 { margin: 0 0 10px; font-size: 16px; }
+
+  .timeline { border-left: 2px solid var(--line); margin-left: 6px; padding-left: 22px; }
+  .tl-item { position: relative; margin-bottom: 26px; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -29px; top: 7px;
+    width: 11px; height: 11px; border-radius: 50%; background: var(--accent);
+    border: 2px solid var(--bg);
+  }
+  .tl-item h3 { margin: 0; font-size: 18px; }
+  .tl-item .meta { color: var(--muted); font-size: 14px; margin: 2px 0 8px; }
+  .tl-item p, .tl-item ul { margin: 0; }
+  .tl-item ul { padding-left: 20px; }
+
+  footer { padding: 36px 0 56px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); margin-top: 30px; }
+
+  @media (max-width: 560px) {
+    .nav .wrap { height: auto; flex-direction: column; gap: 2px; padding-top: 8px; padding-bottom: 8px; }
+    .nav ul { gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .nav ul a { font-size: 13px; }
+    .hero { padding-top: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#atas">Taufik Afrizal</a>
+    <nav>
+      <ul>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#proyek">Proyek</a></li>
+        <li><a href="#tampilan">Tampilan</a></li>
+        <li><a href="#pengalaman">Pengalaman</a></li>
+        <li><a href="#keahlian">Keahlian</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="atas">
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="tag">Terbuka untuk peran Admin dan IT</span>
+      <h1>Halo, saya Taufik Afrizal.</h1>
+      <p>Mahasiswa Teknik Informatika yang terbiasa mengurus administrasi dan pembukuan, lalu membangun sistem web sederhana supaya pekerjaan itu lebih rapi dan mudah dilacak.</p>
+      <a class="btn" href="#proyek">Lihat proyek</a>
+      <a class="btn ghost" href="#pengalaman">Pengalaman kerja</a>
+    </div>
+
+    <section id="tentang">
+      <h2>Tentang saya</h2>
+      <p class="sub">Latar belakang singkat.</p>
+      <div class="card">
+        <p>Saya mahasiswa semester 8 Teknik Informatika di Universitas Pamulang. Saat ini saya bekerja lepas sebagai admin sambil mengembangkan aplikasi web berbasis PHP dan MySQL.</p>
+        <p>Saya senang pekerjaan yang menggabungkan ketelitian administrasi dengan solusi teknis. Untuk jangka panjang, saya tertarik pada manajemen proyek konstruksi, terutama pengelolaan waktu dan penjadwalan.</p>
+      </div>
+    </section>
+
+    <section id="proyek">
+      <h2>Proyek</h2>
+      <p class="sub">Dua proyek yang paling mewakili cara kerja saya.</p>
+      <div class="grid two">
+
+        <article class="card">
+          <h3>Brother Needs - Sistem Manajemen Pasokan</h3>
+          <p class="meta">Aplikasi web untuk usaha distribusi bahan pangan - sedang berjalan</p>
+          <p>Sistem internal untuk mengelola penjualan, pembelian, stok, dan pembukuan sebuah usaha pasokan bahan pangan. Saya mengembangkan dan merawatnya langsung, mengikuti kebutuhan operasional harian.</p>
+          <ul>
+            <li>Pembuatan invoice per pelanggan, status pembayaran, dan pelunasan.</li>
+            <li>Stok barang dengan riwayat perubahan dan fitur penyesuaian hasil stock opname.</li>
+            <li>Pembukuan double-entry: jurnal umum, akun, dan pencatatan otomatis dari transaksi.</li>
+            <li>Catatan kas kecil, pembelian, dan beban operasional.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">PHP</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">PDO</span>
+            <span class="chip">Akuntansi dasar</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Kawatara - Prediksi Kebutuhan Bahan Baku</h3>
+          <p class="meta">Proyek skripsi - sistem web untuk coffee shop</p>
+          <p>Aplikasi yang memprediksi kebutuhan bahan baku mingguan memakai regresi linear (y = a + bx) dari data pemakaian historis, untuk membantu pemesanan ulang yang lebih terukur.</p>
+          <ul>
+            <li>Database 8 tabel: bahan baku, menu, resep, transaksi, stock opname, dan hasil prediksi.</li>
+            <li>Login dengan peran berbeda (pemilik, kasir, barista).</li>
+            <li>Modul stock opname, transaksi penjualan, prediksi, dan laporan.</li>
+            <li>Dibangun dan diuji dengan data simulasi sebelum data nyata dimasukkan.</li>
+          </ul>
+          <div class="chips">
+            <span class="chip">PHP</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">XAMPP</span>
+            <span class="chip">Regresi linear</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="tampilan">
+      <h2>Tampilan aplikasi Brother Needs</h2>
+      <p class="sub">Cuplikan layar dengan data contoh. Nama, harga, dan saldo di bawah ini fiktif.</p>
+      <div class="gallery">
+        <figure class="shot">
+          <a href="img/dashboard.png" target="_blank" rel="noopener"><img src="img/dashboard.png" alt="Dashboard: omzet, margin, piutang, dan saldo kas" loading="lazy"></a>
+          <figcaption>Dashboard: omzet, margin, piutang, saldo kas</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/invoice.png" target="_blank" rel="noopener"><img src="img/invoice.png" alt="Invoice siap cetak" loading="lazy"></a>
+          <figcaption>Invoice siap cetak</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/laporan-harian.png" target="_blank" rel="noopener"><img src="img/laporan-harian.png" alt="Laporan harian: omzet, margin, kas masuk dan keluar" loading="lazy"></a>
+          <figcaption>Laporan harian: omzet, margin, arus kas</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/neraca.png" target="_blank" rel="noopener"><img src="img/neraca.png" alt="Neraca yang seimbang otomatis" loading="lazy"></a>
+          <figcaption>Neraca yang seimbang otomatis</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/jurnal-umum.png" target="_blank" rel="noopener"><img src="img/jurnal-umum.png" alt="Jurnal umum double-entry" loading="lazy"></a>
+          <figcaption>Jurnal umum double-entry</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/stock.png" target="_blank" rel="noopener"><img src="img/stock.png" alt="Stok barang dengan riwayat perubahan" loading="lazy"></a>
+          <figcaption>Stok barang dan riwayat perubahan</figcaption>
+        </figure>
+      </div>
+      <p class="note">Klik gambar untuk melihat ukuran penuh.</p>
+    </section>
+
+    <section id="tampilan-kawatara">
+      <h2>Tampilan aplikasi Kawatara</h2>
+      <p class="sub">Cuplikan layar dengan data simulasi (bukan data penjualan asli).</p>
+      <div class="gallery">
+        <figure class="shot">
+          <a href="img/kawatara-prediksi.png" target="_blank" rel="noopener"><img src="img/kawatara-prediksi.png" alt="Prediksi kebutuhan bahan baku minggu depan" loading="lazy"></a>
+          <figcaption>Prediksi kebutuhan bahan baku minggu depan</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/kawatara-laporan.png" target="_blank" rel="noopener"><img src="img/kawatara-laporan.png" alt="Laporan penjualan dan omzet per hari" loading="lazy"></a>
+          <figcaption>Laporan: omzet per hari, menu terlaris, metode bayar</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/kawatara-penjualan.png" target="_blank" rel="noopener"><img src="img/kawatara-penjualan.png" alt="Halaman kasir untuk mencatat penjualan" loading="lazy"></a>
+          <figcaption>Kasir: catat penjualan per menu</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/kawatara-bahan-baku.png" target="_blank" rel="noopener"><img src="img/kawatara-bahan-baku.png" alt="Master bahan baku dengan status stok" loading="lazy"></a>
+          <figcaption>Master bahan baku dan status stok</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="img/kawatara-stock-opname.png" target="_blank" rel="noopener"><img src="img/kawatara-stock-opname.png" alt="Input stock opname" loading="lazy"></a>
+          <figcaption>Stock opname: hitung fisik lalu sesuaikan</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="pengalaman">
+      <h2>Pengalaman</h2>
+      <p class="sub">Dari administrasi sampai pengembangan sistem.</p>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <h3>Admin Freelance &amp; Pengembang Web</h3>
+          <p class="meta">Sekarang</p>
+          <ul>
+            <li>Mengelola administrasi harian: invoice, pencatatan transaksi, dan rekonsiliasi kas dengan mutasi bank.</li>
+            <li>Mengembangkan dan merawat aplikasi web untuk usaha pasokan bahan pangan.</li>
+            <li>Menyusun laporan posisi usaha: kas, piutang, nilai stok, dan ringkasan penjualan per produk.</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <h3>S1 Teknik Informatika, Universitas Pamulang</h3>
+          <p class="meta">Semester 9</p>
+          <p>Fokus pada pengembangan web dan basis data. Skripsi: sistem prediksi kebutuhan bahan baku.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="keahlian" class="skills">
+      <h2>Keahlian</h2>
+      <p class="sub">Yang saya pakai sehari-hari.</p>
+      <div class="grid two">
+        <div class="card">
+          <h4>Teknis</h4>
+          <div class="chips">
+            <span class="chip">PHP</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">HTML &amp; CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Git &amp; GitHub</span>
+            <span class="chip">VS Code</span>
+            <span class="chip">XAMPP</span>
+          </div>
+        </div>
+        <div class="card">
+          <h4>Administrasi</h4>
+          <div class="chips">
+            <span class="chip">Pembukuan dasar</span>
+            <span class="chip">Rekonsiliasi bank</span>
+            <span class="chip">Invoice &amp; penagihan</span>
+            <span class="chip">Excel</span>
+            <span class="chip">Pelaporan</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Taufik Afrizal. Dibuat dengan HTML dan CSS.</div>
+</footer>
+
+</body>
+</html>
